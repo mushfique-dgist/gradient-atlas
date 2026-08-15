@@ -21,7 +21,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://gradient-atlas.pages.dev"),
+  metadataBase: new URL("https://gradient-atlas.ugrp44group.chatgpt.site"),
   title: {
     default: "Gradient Atlas: Learn AI without the mythology",
     template: "%s · Gradient Atlas",
