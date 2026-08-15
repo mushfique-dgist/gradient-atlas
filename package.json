@@ -9,12 +9,13 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "start": "vinext start",
-    "test": "npm run build && node --test tests/rendered-html.test.mjs",
+    "test": "npm run build && npm run test:rendered",
     "test:unit": "node --experimental-strip-types --test tests/*.test.ts",
+    "test:rendered": "node --test tests/rendered-html.test.mjs",
     "verify:content": "node --experimental-strip-types scripts/verify-content.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "verify": "npm run test:unit && npm run verify:content && npm run typecheck && npm run lint && npm run build"
+    "verify": "npm run test:unit && npm run verify:content && npm run typecheck && npm run lint && npm run build && npm run test:rendered"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
