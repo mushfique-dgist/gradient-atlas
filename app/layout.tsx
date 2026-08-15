@@ -1,20 +1,38 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geologica, IBM_Plex_Mono, Literata } from "next/font/google";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const geologica = Geologica({
+  variable: "--font-geologica",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const literata = Literata({
+  variable: "--font-literata",
+  subsets: ["latin"],
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Starter Project",
-  description: "A clean starting point for building your site.",
+  metadataBase: new URL("https://gradient-atlas.pages.dev"),
+  title: {
+    default: "Gradient Atlas — Learn AI without the mythology",
+    template: "%s · Gradient Atlas",
+  },
+  description:
+    "A source-traceable, interactive course from machine-learning fundamentals to the moving AI frontier.",
+  openGraph: {
+    title: "Gradient Atlas",
+    description: "Learn the machinery. Keep the boundaries.",
+    type: "website",
+  },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
@@ -28,10 +46,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geologica.variable} ${literata.variable} ${plexMono.variable}`}>
+        <a className="skip-link" href="#main-content">Skip to content</a>
+        <SiteHeader />
+        <main id="main-content">{children}</main>
+        <SiteFooter />
       </body>
     </html>
   );
