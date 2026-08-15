@@ -1,6 +1,7 @@
 "use client";
 
-import { useId, type ReactNode } from "react";
+import type { ReactNode } from "react";
+import { stableDomId } from "@/lib/dom-ids";
 
 export function LabShell({ title, note, controls, children }: { title: string; note: string; controls: ReactNode; children: ReactNode }) {
   return (
@@ -19,7 +20,7 @@ export function LabShell({ title, note, controls, children }: { title: string; n
 }
 
 export function Slider({ label, value, min, max, step, onChange, display }: { label: string; value: number; min: number; max: number; step: number; onChange: (value: number) => void; display?: string }) {
-  const id = useId();
+  const id = stableDomId("lab-control", label);
   const labelId = `${id}-label`;
   return (
     <div className="grid gap-2 text-sm">

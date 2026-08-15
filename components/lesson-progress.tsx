@@ -3,6 +3,7 @@
 import { useState, useSyncExternalStore } from "react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useHydrated } from "@/lib/use-hydrated";
 
 const storageKey = "gradient-atlas:completed-lessons";
 const listeners = new Set<() => void>();
@@ -17,6 +18,7 @@ function readProgress(): string[] {
 }
 
 export function LessonProgress({ slug }: { slug: string }) {
+  const hydrated = useHydrated();
   const [storageAvailable, setStorageAvailable] = useState(true);
   const complete = useSyncExternalStore(
     (notify) => {
@@ -47,10 +49,10 @@ export function LessonProgress({ slug }: { slug: string }) {
 
   return (
     <div>
-      <Button aria-pressed={complete} className="h-11 rounded-none px-4" onClick={toggle} type="button" variant={complete ? "secondary" : "default"}>
+      <Button aria-pressed={complete} className="h-11 rounded-none px-4" disabled={!hydrated} onClick={toggle} type="button" variant={complete ? "secondary" : "default"}>
         <Check aria-hidden="true" /> {complete ? "Marked complete" : "Mark lesson complete"}
       </Button>
-      {!storageAvailable && <p className="mt-2 max-w-xs text-xs text-[var(--red)]" role="status">Progress changed for this page, but browser storage is unavailable.</p>}
+      {!storageAvailable && <p className="mt-2 max-w-xs text-xs text-[var(--red)]" role="status">Progress could not be saved because browser storage is unavailable.</p>}
     </div>
   );
 }

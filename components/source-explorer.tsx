@@ -3,9 +3,11 @@
 import { useMemo, useState } from "react";
 import { ExternalLink, Search } from "lucide-react";
 import type { Source } from "@/content/types";
+import { useHydrated } from "@/lib/use-hydrated";
 
 const labels: Record<Source["kind"], string> = {
-  "supplied-book": "Supplied books",
+  "close-read-book": "Close-read books",
+  book: "Reference books",
   paper: "Primary papers",
   course: "Courses",
   official: "Official pages",
@@ -13,6 +15,7 @@ const labels: Record<Source["kind"], string> = {
 };
 
 export function SourceExplorer({ sources }: { sources: Source[] }) {
+  const hydrated = useHydrated();
   const [query, setQuery] = useState("");
   const [kind, setKind] = useState<Source["kind"] | "all">("all");
   const filtered = useMemo(() => {
@@ -26,9 +29,9 @@ export function SourceExplorer({ sources }: { sources: Source[] }) {
         <label className="flex min-h-12 items-center gap-3 border border-[var(--line-strong)] bg-[var(--paper-raised)] px-4">
           <Search aria-hidden="true" className="size-4 text-[var(--ink-muted)]" />
           <span className="sr-only">Search sources</span>
-          <input className="w-full bg-transparent text-sm outline-none placeholder:text-[var(--ink-muted)]" onChange={(event) => setQuery(event.target.value)} placeholder="Search title, author, or topic" type="search" value={query} />
+          <input className="w-full bg-transparent text-sm outline-none placeholder:text-[var(--ink-muted)]" disabled={!hydrated} onChange={(event) => setQuery(event.target.value)} placeholder="Search title, author, or topic" type="search" value={query} />
         </label>
-        <select aria-label="Filter sources by type" className="min-h-12 border border-[var(--line-strong)] bg-[var(--paper-raised)] px-4 text-sm" onChange={(event) => setKind(event.target.value as Source["kind"] | "all")} value={kind}>
+        <select aria-label="Filter sources by type" className="min-h-12 border border-[var(--line-strong)] bg-[var(--paper-raised)] px-4 text-sm" disabled={!hydrated} onChange={(event) => setKind(event.target.value as Source["kind"] | "all")} value={kind}>
           <option value="all">All source types</option>
           {Object.entries(labels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
         </select>

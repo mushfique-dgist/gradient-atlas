@@ -23,7 +23,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://gradient-atlas.pages.dev"),
   title: {
-    default: "Gradient Atlas — Learn AI without the mythology",
+    default: "Gradient Atlas: Learn AI without the mythology",
     template: "%s · Gradient Atlas",
   },
   description:
@@ -32,6 +32,20 @@ export const metadata: Metadata = {
     title: "Gradient Atlas",
     description: "Learn the machinery. Keep the boundaries.",
     type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Gradient Atlas over an editorial map of loss contours and gradient paths",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gradient Atlas",
+    description: "Learn the machinery. Keep the boundaries.",
+    images: ["/og.png"],
   },
   icons: {
     icon: "/favicon.svg",

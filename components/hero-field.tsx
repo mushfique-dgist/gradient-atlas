@@ -21,7 +21,7 @@ export function HeroField() {
           <circle cx="72" cy="180" r="23" />
           <circle cx="72" cy="302" r="23" />
           <circle cx="72" cy="424" r="23" />
-          <circle cx="325" cy="252" r="47" fill="#d78518" />
+          <circle className="drift" cx="325" cy="252" r="47" fill="#d78518" />
           <circle cx="555" cy="118" r="24" />
           <circle cx="555" cy="255" r="24" />
           <circle cx="555" cy="391" r="24" />

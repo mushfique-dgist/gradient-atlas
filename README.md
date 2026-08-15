@@ -1,100 +1,81 @@
-# vinext-starter
+# Gradient Atlas
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+![Gradient Atlas cover](public/og.png)
 
-## Prerequisites
+**A source-traceable course that teaches the machinery of AI and marks the edge of the evidence.**
 
-- Node.js `>=22.13.0`
+Gradient Atlas moves from probability and gradient descent to post-training, world models, evaluation, and open research. It does not flatten that path into a list of model names. Each advanced claim carries a status, date, scope, caveat, and source.
 
-## Quick Start
+The site contains:
+
+- 22 chapter-length lessons across five levels, from AI 101 to a research practicum
+- three deep-dive sections and medium, hard, and challenging practice in every chapter
+- six interactive labs for gradients, geometry, attention, returns, search, and benchmark uncertainty
+- a 22-claim audit that separates useful intuition from technical error
+- 75 books, papers, courses, reports, and official research pages
+- a dated atlas of six emerging research programs, including explicit gaps where public evidence is thin
+- local-only lesson progress, with no account or analytics layer
+
+## The central idea
+
+Frontier claims expire quickly. Stable mechanisms should not. Gradient Atlas keeps those two kinds of knowledge apart: foundational lessons explain what can be derived, while frontier pages state what was public on a specific date and what remains an inference.
+
+## Run it locally
+
+Requirements: Node.js 22.13 or newer.
 
 ```bash
 npm install
 npm run dev
+```
+
+The development server opens at `http://localhost:3000`.
+
+## Verification
+
+```bash
+npm run verify
+```
+
+That command runs deterministic simulation tests, content-contract checks, TypeScript, ESLint, a production build, rendered-output checks, and Playwright across every route. The five top-level routes run at 320, 768, 1024, and 1440 pixels; every lesson receives an additional desktop pass. Focused checks cover keyboard operation, reduced motion, mobile control size, console errors, overflow, and serious or critical accessibility violations.
+
+Individual gates are also available:
+
+```bash
+npm run test:unit
+npm run verify:content
+npm run typecheck
+npm run lint
 npm run build
+npm run test:rendered
+npm run test:e2e
 ```
 
-This starter does not use `wrangler.jsonc`.
+## Evidence rules
 
-## Included Shape
+Mechanism claims prefer primary papers and established textbooks. Claims about current systems use first-party technical reports or official research pages, dated at the point of verification. Research-company pages with little technical disclosure are treated as statements of intent, not results.
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
+The source policy is documented in [`docs/SOURCE_POLICY.md`](docs/SOURCE_POLICY.md). The curriculum and its depth contract live in [`docs/CURRICULUM.md`](docs/CURRICULUM.md).
 
-## Workspace Auth Headers
+## Project structure
 
-Signed-in visitors receive both `oai-authenticated-user-id` and `oai-authenticated-user-email`. Private Sites require every visitor to sign in; public Sites may also have anonymous visitors, for whom neither header is present.
-
-The user ID is stable for the same user on the same Site and different across Sites. Email and name are intended for display or contact purposes.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const userId = requestHeaders.get("oai-authenticated-user-id");
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```text
+app/          routes and metadata
+components/   editorial UI and interactive labs
+content/      typed lessons, claim records, programs, and sources
+lib/          pure simulations and content validation
+tests/        deterministic and rendered-output tests
+e2e/          route, interaction, responsive, and accessibility tests
+docs/         curriculum, specification, and evidence policy
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+## Known limits
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+- The frontier snapshot is dated 2026-08-15. It is designed to be revised, not treated as permanent fact.
+- Lesson completion is stored in the current browser only.
+- The labs isolate one mechanism at a time. They are explanations, not replicas of full training systems.
+- The application uses a beta release of vinext, so framework compatibility remains a release risk. The full dependency tree currently audits cleanly.
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+## License
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
-
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
-
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
-
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+Code and original visual assets are available under the [MIT License](LICENSE). Book excerpts and third-party sources are not redistributed; the site paraphrases and links to them.

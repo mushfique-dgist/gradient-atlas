@@ -12,7 +12,7 @@ export type Source = {
   title: string;
   creators: string;
   year: number;
-  kind: "supplied-book" | "paper" | "course" | "official" | "researcher-note";
+  kind: "close-read-book" | "book" | "paper" | "course" | "official" | "researcher-note";
   locator: string;
   url?: string;
   note: string;
@@ -55,17 +55,56 @@ export type LearningModule = {
   sourceIds: string[];
 };
 
-export type AuditClaim = {
-  claim: string;
-  verdict: "sound" | "partial" | "incorrect" | "unsupported";
-  correction: string;
+export type ChapterSection = {
+  id: string;
+  title: string;
+  paragraphs: string[];
   sourceIds: string[];
 };
 
-export type AuditTurn = {
-  turn: number;
-  learnerQuestion: string;
-  whatWasGood: string;
+export type PracticeProblem = {
+  level: "medium" | "hard" | "challenging";
+  prompt: string;
+  steps: string[];
+  answer: string;
+};
+
+export type ChapterContent = {
+  slug: string;
+  sections: ChapterSection[];
+  practice: PracticeProblem[];
+  transferTask: string;
+  calibration: string;
+};
+
+export type AuditClaim = {
+  id: string;
+  claim: string;
+  verdict: "sound" | "partial" | "incorrect" | "unsupported";
+  correction: string;
+  status: ClaimStatus;
+  scope: string;
+  caveat: string;
+  asOf: string;
+  sourceIds: string[];
+};
+
+export type AuditCluster = {
+  id: string;
+  title: string;
+  usefulConcept: string;
   failureMode: string;
   claims: AuditClaim[];
+};
+
+export type FrontierProgram = {
+  id: string;
+  name: string;
+  announced: string;
+  disclosure: "opaque" | "partial" | "technical-report";
+  publicRecord: string;
+  plausibleDirection: string;
+  missingEvidence: string;
+  researchQuestions: string[];
+  sourceIds: string[];
 };

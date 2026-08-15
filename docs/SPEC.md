@@ -2,27 +2,26 @@
 
 ## Objective
 
-Build a public, source-traceable AI and machine-learning learning site that
-starts with the learner's existing analogies, repairs the parts that are wrong,
-and reaches current research without turning volatile model releases into
-timeless facts.
+Build a public, source-traceable AI and machine-learning course that moves from
+familiar analogies to formal mechanisms, then reaches current research without
+turning volatile model releases into timeless facts.
 
 The first publishable release must:
 
 - expose a coherent AI 101 through AI 404 path;
-- include the audited source conversation as a misconception-repair sequence;
+- include a claim ledger that repairs common misconceptions;
 - define the vocabulary seen in model cards and benchmarks;
 - include interactive, recomputable simulations for the hardest abstractions;
 - distinguish established mechanisms, active research programs, dated frontier
   snapshots, open problems, and interpretive claims;
-- cite supplied books, courses, papers, and official research pages without
+- cite close-read books, courses, papers, and official research pages without
   reproducing copyrighted books or their artwork wholesale;
 - work with keyboard, touch, reduced motion, and 320-1440 px viewports;
 - keep a clean Git history and publish both source and a live site.
 
 ## Tech stack
 
-- React 19.2.6 with the App Router API exposed by vinext 1.0.0-beta.2
+- React 19.2.8 with the App Router API exposed by vinext 1.0.0-beta.6
 - TypeScript 5.9.3
 - Tailwind CSS 4.2.1 theme variables
 - shadcn/ui components added from the official CLI, then visually adapted
@@ -94,9 +93,16 @@ browser product.
   benchmark examples from inputs rather than storing expected prose.
 - Content tests require definitions, notation, misconceptions, worked examples,
   retrieval practice, source IDs, claim status, and as-of dates where needed.
-- Browser tests cover every route at 320, 768, 1024, and 1440 px, keyboard
-  operation, reduced motion, touch-sized controls, route errors, empty filters,
-  repeated local-progress updates, and clean console output.
+  Every module also needs at least three sourced deep-dive sections, a medium to
+  challenging practice ladder, transfer task, calibration gate, and a 600-word
+  chapter-expansion floor beyond the compact lesson map.
+- Browser tests cover all five top-level routes at 320, 768, 1024, and 1440 px,
+  then exercise every lesson route at 1440 px. Focused checks cover keyboard
+  operation, reduced-motion styles, 44 px mobile controls, route errors, empty
+  filters, repeated local-progress updates, and clean console output.
+- Every route and each of the six lab families receives a separate visual pass;
+  this inspection complements the automated route matrix rather than being
+  presented as an automated screenshot assertion.
 - An independent review pass must attempt to falsify each simulation and at
   least one advanced claim per module.
 
@@ -109,13 +115,13 @@ Always:
   "state of the art";
 - verify every numeric worked example with code;
 - label analogies and show where they stop matching the formal object;
-- keep learner progress device-local unless persistence is explicitly added;
+- keep lesson progress device-local unless persistence is explicitly added;
 - run the full gate before a release commit.
 
 Ask first:
 
 - adding accounts, analytics, external user data, payments, or server storage;
-- using a supplied book screenshot in a public release;
+- using a copyrighted book screenshot in a public release;
 - changing the project from educational fair use/quotation to commercial use.
 
 Never:
@@ -130,13 +136,12 @@ Never:
 
 ## Success criteria
 
-1. The home route explains the learning contract and lets a learner enter the
-   path in under two actions.
-2. AI 101-404 each has a coherent module index and at least one full chapter in
-   the first release; the complete goal requires every curriculum module in
-   `docs/CURRICULUM.md` to reach the depth contract.
-3. The conversation audit contains all nine turns and every high-risk claim has
-   a verdict, correction, and supporting source.
+1. The home route explains the learning contract and opens the curriculum in
+   under two actions.
+2. AI 101-404 each has a coherent module index, and every curriculum module in
+   `docs/CURRICULUM.md` reaches the chapter-level depth contract.
+3. The claim audit covers every high-risk statement with a verdict, correction,
+   and supporting source.
 4. At least four simulations have deterministic mathematical tests and a
    written visual contract: representation geometry, gradient learning,
    attention/context, and RL/search/verifier separation.

@@ -4,7 +4,7 @@
 
 1. Foundational papers and current primary papers.
 2. Official model cards, technical reports, research pages, and code.
-3. Supplied textbooks for stable exposition and notation.
+3. Close-read textbooks for stable exposition and notation.
 4. University lecture notes and course recordings from the originating course.
 5. Researcher essays for clearly labeled interpretation.
 6. Forums and social media only for questions, failure reports, and leads that
@@ -13,7 +13,7 @@
 Every claim record stores a source ID, status, scope, caveat, and `asOf` date
 when it can drift. A source supports only the claim it actually demonstrates.
 
-## Supplied books
+## Close-read books
 
 - Bishop, *Pattern Recognition and Machine Learning*: use for probability,
   linear models, graphical models, kernels, mixture models, neural networks, and

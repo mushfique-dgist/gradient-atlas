@@ -40,10 +40,13 @@
   --ink-muted: #625f56;
   --line: #d3cec0;
   --line-strong: #aaa394;
-  --amber: #d78518;
+  --amber: #995500;
+  --amber-fill: #d78518;
+  --amber-bright: #f2b24e;
   --amber-soft: #f2d9a9;
   --blue: #236799;
   --blue-soft: #c9dce8;
+  --blue-pale: #d3e8f2;
   --red: #a63b32;
   --green: #35705a;
   --shadow: 0 1px 0 rgba(23, 23, 19, 0.07), 0 18px 60px rgba(23, 23, 19, 0.05);
@@ -75,10 +78,6 @@ body {
 ::selection {
   background: var(--amber-soft);
   color: var(--ink);
-}
-
-a {
-  color: inherit;
 }
 
 button:not(:disabled),
@@ -166,7 +165,7 @@ button:not(:disabled),
 
 .status-established { background: var(--green); }
 .status-active-program { background: var(--blue); }
-.status-frontier-snapshot { background: var(--amber); }
+.status-frontier-snapshot { background: var(--amber-fill); }
 .status-open-problem { background: var(--red); }
 .status-interpretive { background: var(--ink-muted); }
 
@@ -201,7 +200,7 @@ button:not(:disabled),
 }
 
 .lab-range {
-  accent-color: var(--amber);
+  accent-color: var(--amber-fill);
   min-height: 2.75rem;
   width: 100%;
 }

@@ -19,7 +19,7 @@ export function GradientLab({ title }: { title: string }) {
   }
 
   return (
-    <LabShell note="Fit y=5 at x=2 with one weight. A useful step descends; a large step overshoots and can diverge." title={title} controls={<><Slider label="Learning rate η" max={0.3} min={0.01} onChange={setRate} step={0.01} value={rate} /><div className="flex gap-2"><Button className="rounded-none" onClick={step} type="button">Take one step</Button><Button aria-label="Reset weight" className="rounded-none" onClick={() => setWeight(0)} type="button" variant="outline"><RotateCcw aria-hidden="true" /></Button></div></>}>
+    <LabShell note="Fit y=5 at x=2 with one weight. A useful step descends; a large step overshoots and can diverge." title={title} controls={<><Slider label="Learning rate η" max={0.3} min={0.01} onChange={setRate} step={0.01} value={rate} /><div className="flex gap-2"><Button className="h-11 rounded-none px-4" onClick={step} type="button">Take one step</Button><Button aria-label="Reset weight" className="size-11 rounded-none" onClick={() => setWeight(0)} type="button" variant="outline"><RotateCcw aria-hidden="true" /></Button></div></>}>
       <div className="grid h-full content-center gap-8 sm:grid-cols-3">
         {[['weight w', weight], ['prediction ŷ', prediction], ['squared loss', loss]].map(([label, value]) => (
           <div className="paper-panel p-5" key={String(label)}><span className="eyebrow">{label}</span><strong className="metric-number mt-4 block text-[clamp(2rem,5vw,4rem)]">{Number(value).toFixed(2)}</strong></div>

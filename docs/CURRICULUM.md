@@ -1,9 +1,13 @@
 # Curriculum map
 
 The course is a dependency graph, not a parade of model releases. Every module
-uses the same teaching unit: learner question, useful analogy, analogy failure,
+uses the same teaching unit: motivating question, useful analogy, analogy failure,
 formal model, worked example, interactive lab, retrieval questions, source map,
-and one research-facing limitation.
+and one research-facing limitation. Every lesson then continues through three
+sourced deep dives, medium/hard/challenging worked practice, a transfer task,
+and a calibration gate. The repeated structure is deliberate: intuition opens
+the topic, formalism constrains it, and retrieval plus transfer tests whether it
+can survive outside the original example.
 
 ## AI 101: learning from data
 
@@ -61,8 +65,8 @@ and one research-facing limitation.
 
 ## Misconception repair spine
 
-The supplied conversation becomes a parallel path with nine turns. Each turn
-must preserve the user's real question while correcting the assistant's answer.
+The claim audit is a parallel path through recurring misconceptions. Each entry
+preserves the underlying question while correcting claims that exceed the evidence.
 High-priority counterexamples include autoregressive SSL that is not denoising,
 Diffusion Policy for physical control, AlphaFold 3 as diffusion rather than RL,
 AlphaDev as bounded verifiable discovery, V-JEPA as self-supervision rather than

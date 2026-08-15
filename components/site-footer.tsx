@@ -6,13 +6,13 @@ export function SiteFooter() {
       <div className="page-shell grid gap-12 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <p className="display max-w-md text-3xl">A map of mechanisms, evidence, and honest uncertainty.</p>
-          <p className="mt-5 max-w-md text-sm leading-6 text-[#bdb8aa]">Built from primary papers, four supplied books, and a nine-turn conversation that deserved a more careful answer.</p>
+          <p className="mt-5 max-w-md text-sm leading-6 text-[#bdb8aa]">Built from close-read textbooks, a wider reference shelf, primary papers, and dated technical reports.</p>
         </div>
         <div>
           <p className="eyebrow !text-[#8f8a7d]">Navigate</p>
           <div className="mt-4 grid gap-3 text-sm">
             <Link href="/learn">Course map</Link>
-            <Link href="/audit">Conversation audit</Link>
+            <Link href="/audit">Claim audit</Link>
             <Link href="/atlas">Frontier atlas</Link>
           </div>
         </div>

@@ -17,7 +17,7 @@ export function AttentionLab({ title }: { title: string }) {
           <div className="paper-panel p-5" key={index}>
             <div className="flex items-baseline justify-between"><span className="eyebrow">Key {index + 1}</span><strong className="font-mono text-xl">{weight.toFixed(3)}</strong></div>
             <div className="mt-5 h-44 border border-[var(--line-strong)] bg-[var(--wash)] p-2 flex items-end">
-              <div className={index === 0 ? "w-full bg-[var(--amber)]" : "w-full bg-[var(--blue)]"} style={{ height: `${weight * 100}%` }} />
+              <div className={index === 0 ? "w-full bg-[var(--amber-fill)]" : "w-full bg-[var(--blue)]"} style={{ height: `${weight * 100}%` }} />
             </div>
           </div>
         ))}

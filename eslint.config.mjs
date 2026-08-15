@@ -13,6 +13,9 @@ const eslintConfig = defineConfig([
     "dist/**",
     "out/**",
     "build/**",
+    "blob-report/**",
+    "playwright-report/**",
+    "test-results/**",
     "next-env.d.ts",
   ]),
   eslint.configs.recommended,
@@ -34,6 +37,9 @@ const eslintConfig = defineConfig([
       react: {
         version: "detect",
       },
+    },
+    rules: {
+      "jsx-a11y/no-noninteractive-tabindex": ["error", { roles: ["region", "tabpanel"] }],
     },
   },
 ]);

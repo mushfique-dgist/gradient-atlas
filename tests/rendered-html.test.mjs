@@ -62,7 +62,7 @@ test("home renders the public editorial experience, not starter scaffolding", as
 test("all top-level routes expose their core content", async () => {
   const expectations = [
     ["/learn", /Twenty-two ways to be less wrong/],
-    ["/audit", /The questions got better/],
+    ["/audit", /The claim got louder/],
     ["/atlas", /There is no single edge/],
     ["/sources", /Trace every serious claim/],
   ];
@@ -80,6 +80,12 @@ test("all 22 lesson routes render the full teaching contract", async () => {
     assert.match(html, /Misconception checks/);
     assert.match(html, /Close the book/);
     assert.match(html, /Source map/);
+    assert.match(html, /Build the mechanism in layers/);
+    assert.match(html, /Practice ladder/);
+    assert.match(html, />medium</);
+    assert.match(html, />hard</);
+    assert.match(html, />challenging</);
+    assert.match(html, /Transfer and calibration/);
     assert.doesNotMatch(html, /undefined|NaN/);
   }
 });
