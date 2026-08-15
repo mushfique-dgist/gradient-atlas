@@ -56,6 +56,8 @@ test("home renders the public editorial experience, not starter scaffolding", as
   assert.match(html, /Keep the boundaries/);
   assert.match(html, /22[\s\S]*connected modules/);
   assert.match(html, /href="\/audit"/);
+  assert.match(html, /rel="canonical" href="https:\/\/gradient-atlas\.ugrp44group\.chatgpt\.site"/);
+  assert.match(html, /property="og:url" content="https:\/\/gradient-atlas\.ugrp44group\.chatgpt\.site"/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|Your site is taking shape|react-loading-skeleton/i);
 });
 

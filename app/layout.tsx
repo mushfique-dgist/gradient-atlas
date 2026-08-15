@@ -28,10 +28,14 @@ export const metadata: Metadata = {
   },
   description:
     "A source-traceable, interactive course from machine-learning fundamentals to the moving AI frontier.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Gradient Atlas",
     description: "Learn the machinery. Keep the boundaries.",
     type: "website",
+    url: "/",
     images: [
       {
         url: "/og.png",
